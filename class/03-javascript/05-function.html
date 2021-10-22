@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>인증번호 실습</title>
+    <script src="05-function.js"></script>
+</head>
+
+<body>
+
+
+    <div>
+        <input type="text" placeholder="000000" id="inputText">
+        <button onclick="getToken()" id="sendBtn">인증번호 전송</button>
+        <!-- <button id="sendBtn">인증번호 전송</button> -->
+    </div>
+
+
+
+
+
+
+
+    <script>
+        //////////////////////////////온클릭 방법///////////////////////////////
+        // function getToken(){
+        //     const token = String(Math.floor(Math.random()*1000000)).padStart(6,"0");
+        //     document.getElementById("#inputText").innerText = token;
+        // }
+
+
+        //////////////////////////////온클릭 화살표 함수 변경/////////////////////////////
+        // const getToken = () => {
+        //     const token = String(Math.floor(Math.random()*1000000)).padStart(6,"0");
+        //     document.getElementById("#inputText").innerText = token;
+        // }
+
+
+
+
+        //////////////////이벤트리스너 활용//////////////////////////////////
+        // const sendbtn = document.querySelector("#sendBtn");
+
+        // sendbtn.addEventListener("click",function(){
+
+        //     document.querySelector("#inputText").value = String(Math.floor(Math.random()*1000000)).padStart(6,"0");
+
+        //     console.log(inputText);
+        // })
+
+
+        ////////////////////화살표 함수//////////////////////////////
+        // const sendbtn = document.querySelector("#sendBtn");
+
+        // sendbtn.addEventListener("click", () => {
+
+        //     document.querySelector("#inputText").value = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
+
+        //     console.log(inputText);
+        // })
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

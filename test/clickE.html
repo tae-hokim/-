@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="000000" id="inputText">
+        <!-- <button onclick="getToken()" id="sendBtn">인증번호 전송</button> -->
+        <button id="sendBtn">인증번호 전송</button>
+        <span id="time"></span>
+    </div>
+
+
+
+    <script>
+
+        //////////////////인증번호 전송 시간 설정//////////////////////////////////
+        const sendbtn = document.querySelector("#sendBtn");
+
+        sendbtn.addEventListener("click", function () {
+
+            document.querySelector("#inputText").value = String(Math.floor(Math.random() * 1000000)).padStart(6, "0");
+
+            let time = 180;
+            setInterval(function () {
+                if (time >= 0) {
+                    const minutes = Math.floor(time / 60);
+                    const second = time % 60;
+                    console.log(second);
+
+                    if((minutes === 3) || (minutes === 2) || (minutes === 1)){
+                        if(second.includes("0")){
+                            console.log("0이 포함됨")
+                        }
+                        document.getElementById("time").innerText =  "0" + minutes + ":" + second;
+                        time -= 1;
+                    }
+
+                    // console.log(minutes + ":" + second);
+                    
+                    sendbtn.setAttribute("disabled", "disabled");
+                }
+            }, 1000)
+            console.log(inputText);
+        })
+
+
+
+
+        // setTimeout(function(){
+        //     console.log("기능이 실행!!!!")
+        // },5000)
+
+        // setInterval(function(){
+        //     console.log("셋인터벌")
+        // },2000);
+
+        // let time = 10;
+        // setInterval(function () {
+
+        //     if (time >= 0) {
+        //         console.log(time);
+        //         time -= 1;
+        //     }
+        // }, 1000)
+
+        ///////////////////////3분 타이머 주기///////////////////////////////////
+        // let time = 180;
+        // setInterval(function(){
+        //     if(time >= 0){
+        //         const minutes = Math.floor(time/60);
+        //         const second = time % 60;
+        //         console.log(minutes + ":" + second);
+        //         time-=1;
+        //     }
+        // },1000)
+
+
+    </script>
+</body>
+
+</html>

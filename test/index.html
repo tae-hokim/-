@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+</head>
+<body>
+    <input type="text" maxlength="6" id="juminFront">-<input type="password" maxlength="7" id="juminRear"><br>
+    
+    성별 : <span id="sex"></span><br>
+    성인여부 : <span id="isAdult"></span><br>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            $('#juminFront').on('keypress', function(event){
+    //             alert(event.which); // 0(숫자) == 48(이벤트 코드) ~ 9 == 57 // backspace == 8
+                
+                if(event.which && ( event.which > 47 && event.which <58 || event.which == 8)){}
+                else
+                    {
+                        event.preventDefault();
+    //                     return false;                
+                    }
+            });
+            $('#juminRear').on('keypress', function(event){
+                
+                if(event.which && ( event.which > 47 && event.which <58 || event.which == 8)){}
+                else
+                    {
+                        event.preventDefault();
+    //                     return false;                
+                    }
+            });
+            
+            // 입력완료 시 다음 input으로 커서 자동 이동
+            $('#post').on('keyup', function(){
+                if($(this).val().length == 6)
+                    $('#juminRear').trigger('focus');
+                    console.log("커서가 이동되었습니다.")
+            });
+            
+            // 
+            $('#juminRear').on('keyup', function(){
+                if($(this).val().length == 7){
+                    var ch = $(this).val().slice(0,1);
+                    var sex = $('#sex');
+                    if(ch == '1' || ch == '3')
+                        sex.text('남자');
+                    else if(ch == '2' || ch == '4')
+                        sex.text('여자');
+                    
+                    var isAdult = $('#isAdult');
+                    var year = $('#juminFront').val().slice(0,2);
+                    var age;
+                    if(ch == '1' || ch == '2')
+                        //1900년대
+                        age = 116 - year;
+                    else if (ch == '3' || ch == '4')
+                        //2000년대
+                        age = 16 - year;
+                    
+    //                 isAdult.text(age);
+                        
+                    if(age > 19)
+                        isAdult.text('성인');
+                    else
+                        isAdult.text('미성년자');
+                }        
+            });
+            
+            
+        });
+    </script>
+</body>
+</html>
+
